@@ -41,7 +41,11 @@ def add_task(tasks):
 
     description = input("\nTask description: ").strip()
 
-    if description.lower() == 'cancel':
+    if description.lower() == 'help':
+        show_help()
+        return add_task(tasks) # Go back to the add_task prompt
+
+    elif description.lower() == 'cancel':
         print("\nReturning to menu...")
         return
 
@@ -175,7 +179,11 @@ def mark_complete(tasks):
     print("\n" + "="*50)
     choice = input("\nWhich task did you complete? (or 'cancel'): ").strip()
 
-    if choice.lower() == 'cancel':
+    if choice.lower() == 'help':
+        show_help()
+        return mark_complete(tasks) # Go back to the mark_complete prompt
+
+    elif choice.lower() == 'cancel':
         print("\nReturning to menu...")
         return
 
@@ -258,7 +266,7 @@ def show_help():
     print(" - Type 'cancel' to go back without saving")
     print(" - All tasks are saved automatically")
 
-    input("\nPress any key to return to main menu...")
+    input("\nPress any key to return...")
 
 def main():
     """Main program loop"""
@@ -286,9 +294,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
